@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C962ABC72179FA0300EA4176 /* Traversal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C962ABC62179FA0300EA4176 /* Traversal.swift */; };
+		C962ABCC2179FB2800EA4176 /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = C962ABC92179FB2800EA4176 /* Function.swift */; };
+		C962ABCD2179FB2800EA4176 /* Dispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C962ABCA2179FB2800EA4176 /* Dispatch.swift */; };
+		C962ABCE2179FB2800EA4176 /* Swifter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C962ABCB2179FB2800EA4176 /* Swifter.swift */; };
+		C962ABD0217A15CD00EA4176 /* Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C962ABCF217A15CD00EA4176 /* Operator.swift */; };
 		C9DF83222179C9890044334E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DF83212179C9890044334E /* AppDelegate.swift */; };
 		C9DF83242179C9890044334E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DF83232179C9890044334E /* ViewController.swift */; };
 		C9DF83272179C9890044334E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9DF83252179C9890044334E /* Main.storyboard */; };
@@ -18,6 +23,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C962ABC62179FA0300EA4176 /* Traversal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Traversal.swift; sourceTree = "<group>"; };
+		C962ABC92179FB2800EA4176 /* Function.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
+		C962ABCA2179FB2800EA4176 /* Dispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dispatch.swift; sourceTree = "<group>"; };
+		C962ABCB2179FB2800EA4176 /* Swifter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Swifter.swift; sourceTree = "<group>"; };
+		C962ABCF217A15CD00EA4176 /* Operator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operator.swift; sourceTree = "<group>"; };
 		C9DF831E2179C9890044334E /* FunctionalSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FunctionalSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9DF83212179C9890044334E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9DF83232179C9890044334E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -41,6 +51,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C962ABC82179FA3300EA4176 /* Swifter */ = {
+			isa = PBXGroup;
+			children = (
+				C962ABCA2179FB2800EA4176 /* Dispatch.swift */,
+				C962ABC92179FB2800EA4176 /* Function.swift */,
+				C962ABCB2179FB2800EA4176 /* Swifter.swift */,
+			);
+			path = Swifter;
+			sourceTree = "<group>";
+		};
 		C9DF83152179C9890044334E = {
 			isa = PBXGroup;
 			children = (
@@ -74,9 +94,12 @@
 		C9DF83332179C9990044334E /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				C962ABCF217A15CD00EA4176 /* Operator.swift */,
+				C962ABC82179FA3300EA4176 /* Swifter */,
 				C9DF83352179C9D50044334E /* Chunk.swift */,
 				C9DF83362179C9D50044334E /* Cycle.swift */,
 				C9DF83342179C9D50044334E /* Edit.swift */,
+				C962ABC62179FA0300EA4176 /* Traversal.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -153,8 +176,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9DF83242179C9890044334E /* ViewController.swift in Sources */,
+				C962ABCD2179FB2800EA4176 /* Dispatch.swift in Sources */,
 				C9DF83392179C9D50044334E /* Cycle.swift in Sources */,
+				C962ABCE2179FB2800EA4176 /* Swifter.swift in Sources */,
+				C962ABCC2179FB2800EA4176 /* Function.swift in Sources */,
+				C962ABC72179FA0300EA4176 /* Traversal.swift in Sources */,
 				C9DF83222179C9890044334E /* AppDelegate.swift in Sources */,
+				C962ABD0217A15CD00EA4176 /* Operator.swift in Sources */,
 				C9DF83372179C9D50044334E /* Edit.swift in Sources */,
 				C9DF83382179C9D50044334E /* Chunk.swift in Sources */,
 			);

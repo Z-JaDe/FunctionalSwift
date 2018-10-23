@@ -10,26 +10,31 @@ import Foundation
 
 extension Collection {
     /// ZJaDe: 根据 size 把 Collection 拆分
-    func chunk(_ size:Int) -> [Self.SubSequence] {
-        var result = [Self.SubSequence]()
+    public func chunk(_ size:Int) -> AnySequence<SubSequence> {
         var temp = self.dropFirst(0)
-        while temp.count > 0 {
-            result.append(temp.prefix(size))
-            temp = temp.dropFirst(size)
+        return AnySequence { () -> AnyIterator<SubSequence> in
+            return AnyIterator({
+                guard temp.count > 0 else { return nil }
+                defer { temp = temp.dropFirst(size) }
+                return temp.prefix(size)
+            })
         }
-        return result
     }
     /// ZJaDe: 根据 sizes 把 Collection 拆分
-    func chunk(_ sizes:[Int]) -> [Self.SubSequence] {
-        var result = [Self.SubSequence]()
+    public func chunk(_ sizes:[Int]) -> AnySequence<SubSequence> {
         var temp = self.dropFirst(0)
-        for size in sizes {
-            guard temp.count > 0 else {
-                break
-            }
-            result.append(temp.prefix(size))
-            temp = temp.dropFirst(size)
+        var sizeIterator = sizes.makeIterator()
+        return AnySequence { () -> AnyIterator<SubSequence> in
+            return AnyIterator({
+                guard temp.count > 0 else { return nil }
+                if let size = sizeIterator.next() {
+                    defer { temp = temp.dropFirst(size) }
+                    return temp.prefix(size)
+                }else {
+                    defer { temp = temp.dropFirst(temp.count) }
+                    return temp
+                }
+            })
         }
-        return result
     }
 }
