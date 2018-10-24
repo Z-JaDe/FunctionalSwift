@@ -20,20 +20,25 @@ extension Collection {
             })
         }
     }
-    /// ZJaDe: 根据 sizes 把 Collection 拆分
+    /// ZJaDe: 根据 sizes 把 Collection 拆分, 如果数组里面有 0 对应位置的size等于数组的上一个size
     public func chunk(_ sizes:[Int]) -> AnySequence<SubSequence> {
         var temp = self.dropFirst(0)
         var sizeIterator = sizes.makeIterator()
         return AnySequence { () -> AnyIterator<SubSequence> in
+            var preSize:Int?
             return AnyIterator({
                 guard temp.count > 0 else { return nil }
+                let tempSize:Int //= sizeIterator.next().map({$0 > 0 ? $0 : (preSize ?? 0)}) ?? temp.count
                 if let size = sizeIterator.next() {
-                    defer { temp = temp.dropFirst(size) }
-                    return temp.prefix(size)
+                    tempSize = size > 0 ? size : (preSize ?? 0)
                 }else {
-                    defer { temp = temp.dropFirst(temp.count) }
-                    return temp
+                    tempSize = temp.count
                 }
+                defer {
+                    temp = temp.dropFirst(tempSize)
+                    preSize = tempSize
+                }
+                return temp.prefix(tempSize)
             })
         }
     }

@@ -23,7 +23,7 @@ extension Sequence {
         })
     }
     /// ZJaDe: 序列中所有元素都满足 function返回true 时 返回结果为true
-    public func every(_ function: (Element) -> Bool) -> Bool {
+    public func all(_ function: (Element) -> Bool) -> Bool {
         // ZJaDe: 语解 找不到一个元素为false时说明所有元素都为true
         return contains(where: {function($0) == false}) == false
     }
@@ -34,7 +34,7 @@ extension Sequence {
 }
 extension Sequence where Element == Bool {
     public func isTrue() -> Bool {
-        return every({$0})
+        return all({$0})
     }
 }
 
