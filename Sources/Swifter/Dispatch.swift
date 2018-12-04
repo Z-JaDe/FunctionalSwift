@@ -39,7 +39,7 @@ extension Swifter {
         return { (params) -> E in
             if let result = result {
                 return result
-            }else {
+            } else {
                 result = function(params)
                 return result!
             }

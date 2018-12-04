@@ -28,5 +28,3 @@ extension Swifter {
         return { function($0, parameters) }
     }
 }
-
-

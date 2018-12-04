@@ -40,8 +40,8 @@ extension Sequence where Element == Bool {
 
 extension Sequence {
     /// ZJaDe: 元素出现的频率
-    public func frequencies<T>(_ function: (Element) -> T) -> [T:Int] {
-        return self.reduce(into: [T:Int](), { (counts, element) in
+    public func frequencies<T>(_ function: (Element) -> T) -> [T: Int] {
+        return self.reduce(into: [T: Int](), { (counts, element) in
             counts[function(element), default: 0] += 1
         })
     }
