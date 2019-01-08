@@ -32,6 +32,7 @@ extension Collection {
              "11111".chunk([1,0,2]) == ["1","1","11","1"]
              "11111".chunk([0]) == ["11111"]
              "11111".chunk([1]) == ["1","1111"]
+             "11111".chunk([1,0]) == ["1", "1", "1", "1", "1"]
      */
     public func chunk(_ sizes: [Int]) -> AnySequence<SubSequence> {
         var temp = self.dropFirst(0)
