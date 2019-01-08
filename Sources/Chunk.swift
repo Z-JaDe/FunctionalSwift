@@ -10,8 +10,9 @@ import Foundation
 
 extension Collection {
     /// ZJaDe: 根据 size 把 Collection 拆分 相当于 chunk(size, 0)
-    public func chunk(_ size: Int) -> AnySequence<SubSequence> {
+    public func chunk(_ size: UInt) -> AnySequence<SubSequence> {
         var temp = self.dropFirst(0)
+        let size = Int(size)
         return AnySequence { () -> AnyIterator<SubSequence> in
             return AnyIterator({
                 guard temp.count > 0 else { return nil }
@@ -34,7 +35,7 @@ extension Collection {
              "11111".chunk([1]) == ["1","1111"]
              "11111".chunk([1,0]) == ["1", "1", "1", "1", "1"]
      */
-    public func chunk(_ sizes: [Int]) -> AnySequence<SubSequence> {
+    public func chunk(_ sizes: [UInt]) -> AnySequence<SubSequence> {
         var temp = self.dropFirst(0)
         var sizeIterator = sizes.makeIterator()
         return AnySequence { () -> AnyIterator<SubSequence> in
@@ -43,7 +44,7 @@ extension Collection {
                 guard temp.count > 0 else { return nil }
                 let size: Int = {
                     if let tempSize = sizeIterator.next() {
-                        return tempSize > 0 ? tempSize : preSize
+                        return tempSize > 0 ? Int(tempSize) : preSize
                     } else {
                         return sizes.last.flatMap({$0 > 0 ? nil : preSize})
                     }
@@ -56,8 +57,8 @@ extension Collection {
             })
         }
     }
-    /// ZJaDe: 详见 chunk(_ sizes:[Int])
-    public func chunk(_ sizes: Int...) -> AnySequence<SubSequence> {
+    /// ZJaDe: 详见 chunk(_ sizes:[UInt])
+    public func chunk(_ sizes: UInt...) -> AnySequence<SubSequence> {
         return chunk(sizes)
     }
 }
