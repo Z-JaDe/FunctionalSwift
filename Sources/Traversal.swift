@@ -12,29 +12,20 @@ extension Sequence {
     public typealias Pair = (Element, Element)
     /// ZJaDe: 遍历序列 每次取相邻的两个元素
     public func eachPair() -> AnySequence<Pair> {
-        var iterator = self.makeIterator()
-        guard var previous = iterator.next() else { return AnySequence([]) }
         return AnySequence({ () -> AnyIterator<Pair> in
-            return AnyIterator({
+            var iterator = self.makeIterator()
+            guard var previous = iterator.next() else { return AnyIterator { return nil } }
+            return AnyIterator {
                 guard let next = iterator.next() else { return nil }
                 defer { previous = next }
                 return (previous, next)
-            })
+            }
         })
-    }
-    /// ZJaDe: 序列中所有元素都满足 function返回true 时 返回结果为true
-    public func all(_ function: (Element) -> Bool) -> Bool {
-        // ZJaDe: 语解 找不到一个元素为false时说明所有元素都为true
-        return contains(where: {function($0) == false}) == false
-    }
-    /// ZJaDe: 序列中至少一个元素满足 function返回true 时 返回结果为true
-    public func any(_ function: (Element) -> Bool) -> Bool {
-        return contains(where: function)
     }
 }
 extension Sequence where Element == Bool {
     public func isTrue() -> Bool {
-        return all({$0})
+        return allSatisfy({$0})
     }
 }
 
