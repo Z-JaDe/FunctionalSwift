@@ -15,7 +15,7 @@ extension Collection {
             var temp = self.dropFirst(0)
             let size = Int(size)
             return AnyIterator({
-                guard temp.count > 0 else { return nil }
+                guard temp.isEmpty == false else { return nil }
                 let size: Int = size > 0 ? size : temp.count
                 defer { temp = temp.dropFirst(size) }
                 return temp.prefix(size)
@@ -41,7 +41,7 @@ extension Collection {
             var sizeIterator = sizes.makeIterator()
             var preSize: Int?
             return AnyIterator({
-                guard temp.count > 0 else { return nil }
+                guard temp.isEmpty == false else { return nil }
                 let size: Int = {
                     if let tempSize = sizeIterator.next() {
                         return tempSize > 0 ? Int(tempSize) : preSize
