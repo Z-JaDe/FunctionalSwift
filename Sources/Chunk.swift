@@ -35,7 +35,7 @@ extension Collection {
              "11111".chunk([1]) == ["1","1111"]
              "11111".chunk([1,0]) == ["1", "1", "1", "1", "1"]
      */
-    public func chunk(_ sizes: [UInt]) -> AnySequence<SubSequence> {
+    public func chunk(sizes: [UInt]) -> AnySequence<SubSequence> {
         return AnySequence { () -> AnyIterator<SubSequence> in
             var temp = self.dropFirst(0)
             var sizeIterator = sizes.makeIterator()
@@ -58,7 +58,7 @@ extension Collection {
         }
     }
     /// ZJaDe: 详见 chunk(_ sizes:[UInt])
-    public func chunk(_ sizes: UInt...) -> AnySequence<SubSequence> {
-        return chunk(sizes)
+    public func chunk(sizes: UInt...) -> AnySequence<SubSequence> {
+        return chunk(sizes: sizes)
     }
 }
