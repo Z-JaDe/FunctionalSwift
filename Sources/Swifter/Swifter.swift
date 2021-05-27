@@ -8,6 +8,6 @@
 
 import Foundation
 
-open class Swifter {
+public struct Swifter {
 
 }
